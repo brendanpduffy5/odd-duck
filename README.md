@@ -4,3 +4,5 @@ I used the basic layout of the grid from class on 3/11 to make up the wireframe 
 ## Lab 11 Lighthouse Accessibility Score:
 
 <img title="Lab 11 Lighthouse Accessibility Score" alt="a screenshot of a Lighthouse Accessibility Score of 100" src="img/Lighthouse%20Rating%20Lab%2011.jpg">
+
+This is a test for the new branch dataviz.

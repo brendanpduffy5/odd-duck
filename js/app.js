@@ -63,24 +63,29 @@ function renderImgs(){
 
   while(indexOne === indexTwo){
     indexTwo = getRandomIndex();
-    while(indexTwo === indexThree){
-      indexThree = getRandomIndex();
-    }
   }
+
+  while(indexTwo === indexThree){
+    indexThree = getRandomIndex();
+  }
+
+
+
   imgOne.src = state.allProductsArray[indexOne].photo;
   imgOne.alt = state.allProductsArray[indexOne].name;
+  // console.log(state.allProductsArray[indexOne].views);
   state.allProductsArray[indexOne].views++
-  console.log(state.allProductsArray[indexOne.views++]);
+  // console.log(state.allProductsArray[indexOne].views);
 
   imgTwo.src = state.allProductsArray[indexTwo].photo;
   imgTwo.alt = state.allProductsArray[indexTwo].name;
   state.allProductsArray[indexTwo].views++
-  console.log(state.allProductsArray[indexTwo.views++]);
+  // console.log(state.allProductsArray[indexTwo.views++]);
 
   imgThree.src = state.allProductsArray[indexThree].photo;
   imgThree.alt = state.allProductsArray[indexThree].name;
   state.allProductsArray[indexThree].views++;
-  console.log(state.allProductsArray[indexThree.views++]);
+  // console.log(state.allProductsArray[indexThree.views++]);
 }
 renderImgs();
 
@@ -90,7 +95,7 @@ function handleClick(event){
   for(let i = 0; i < state.allProductsArray.length; i++){
     if(imgClicked === state.allProductsArray[i].name){
       state.allProductsArray[i].votes++;
-      console.log(imgClicked, state.allGoatsArray[i].votes);
+      console.log(imgClicked, state.allProductsArray[i].votes);
     }
   }
   renderImgs();

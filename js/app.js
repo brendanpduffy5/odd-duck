@@ -17,6 +17,11 @@ let imgTwo = document.getElementById('img-two');
 let imgThree = document.getElementById('img-three');
 let resultsButton = document.getElementById('results-button');
 let resultsList = document.getElementById('results-list');
+let chartButton = document.getElementById('chart-button');
+
+//>>>>>>>>>>>> CHART JS REFERENCE
+
+const ctx = document.getElementById('results-chart');
 
 // >>>>>>>>>>> CONSTRUCTOR FUNCTOIN:
 
@@ -89,6 +94,54 @@ function renderImgs(){
 }
 renderImgs();
 
+// FUNCTION TO RENDER CHART
+function renderChart(){
+  ctx.style.display = 'block';
+  let productNames = [];
+  let productVotes = [];
+  let productViews = [];
+
+  for(let i = 0; i < state.allProductsArray.length; i++){
+    productNames.push(state.allProductsArray[i].name);
+    productVotes.push(state.allProductsArray[i].votes);
+    productViews.push(state.allProductsArray[i].views);
+  }
+
+  let chart = {
+    type : 'bar',
+    data: {
+      labels: productNames,
+      datasets: [{
+        label: '# of Votes',
+        data: productVotes,
+        borderWidth: 3,
+        backgroundColor: '#32cd32'
+      },
+      {
+        label: '# of Views',
+        data: productViews,
+        borderWidth: 3,
+        backgroundColor: '#FF0800'
+      }
+]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  };
+  new Chart(ctx, chart);
+}
+
+
+
+
+
+// >>>>>>>>>>>>>>> EVENT HANDLERS
+
 function handleClick(event){
   voteCount--;
   let imgClicked = event.target.alt;
@@ -109,15 +162,20 @@ function handleClick(event){
 
 function handleShowResults(){
   if (voteCount === 0){
-      for (let i =0; i < state.allProductsArray.length; i++){
-        let liElem = document.createElement('li');
-        liElem.textContent= `${state.allProductsArray[i].name} was shown ${state.allProductsArray[i].views} and had ${state.allProductsArray[i].votes} votes`; resultsList.append(liElem);
-      }
+    for (let i =0; i < state.allProductsArray.length; i++){
+      let liElem = document.createElement('li');
+      liElem.textContent= `${state.allProductsArray[i].name} was shown ${state.allProductsArray[i].views} and had ${state.allProductsArray[i].votes} votes`;
+      resultsList.appendChild(liElem);
     }
-  }
+    chartButton.style.display = 'none';
+   
+    renderChart();
 
-  imgContainer.addEventListener('click', handleClick);
-  resultsButton.addEventListener('click', handleShowResults);
+  }
+}
+
+imgContainer.addEventListener('click', handleClick);
+chartButton.addEventListener('click', handleShowResults);
 
 
 

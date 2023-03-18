@@ -30,29 +30,46 @@ function Product(name, fileExtension = 'jpg'){
   this.views = 0;
   this.votes = 0;
   this.photo = `img/${name}.${fileExtension}`;
+
   state.allProductsArray.push(this);
 }
 
-let bag = new Product('bag');
-let banana = new Product('banana');
-let bathroom = new Product('bathroom');
-let boots = new Product ('boots');
-let breakfast = new Product ('breakfast');
-let bubblegum = new Product('bubblegum');
-let chair = new Product('chair');
-let cthulhu = new Product('cthulhu');
-let dogduck = new Product ('dog-duck');
-let dragon = new Product ('dragon');
-let pen = new Product('pen');
-let petsweep = new Product('pet-sweep');
-let scissors = new Product('scissors');
-let shark = new Product ('shark');
-let sweep2 = new Product ('sweep2');
-let tauntaun = new Product('tauntaun');
-let unicorn = new Product('unicorn');
-let watercan = new Product('water-can');
-let wineglass = new Product ('wine-glass');
+// >>>>>  LOCAL STORAGE RETRIEVAL
 
+// >>>>>>> STEP THREE: GET DATA VIA THE KEY WE ASSIGNED
+let retrievedProducts = localStorage.getItem('products');
+console.log('RETRIEVED PRODUCTS', retrievedProducts);
+
+// >>>>>>>  STEP FOUR: PARSE - CONVERT DATA TO ORIGINAL FORMAT
+let parsedProducts = JSON.parse(retrievedProducts);
+// NOW they're in their original format
+console.log('PARSED ----->', parsedProducts);
+
+if (retrievedProducts){
+  state.allProductsArray = parsedProducts;
+} else {
+  let bag = new Product('bag');
+  let banana = new Product('banana');
+  let bathroom = new Product('bathroom');
+  let boots = new Product ('boots');
+  let breakfast = new Product ('breakfast');
+  let bubblegum = new Product('bubblegum');
+  let chair = new Product('chair');
+  let cthulhu = new Product('cthulhu');
+  let dogduck = new Product ('dog-duck');
+  let dragon = new Product ('dragon');
+  let pen = new Product('pen');
+  let petsweep = new Product('pet-sweep');
+  let scissors = new Product('scissors');
+  let shark = new Product ('shark');
+  let sweep2 = new Product ('sweep2');
+  let tauntaun = new Product('tauntaun');
+  let unicorn = new Product('unicorn');
+  let watercan = new Product('water-can');
+  let wineglass = new Product ('wine-glass');
+}
+
+// PROOF OF LIFE
 console.log(state.allProductsArray);
 
 function getRandomIndex(){
@@ -156,9 +173,22 @@ function handleClick(event){
   //   STOP VOTES AFTER 25
   if(voteCount === 0){
     imgContainer.removeEventListener('click', handleClick);
-  }
-  console.log(voteCount);
+
+    // >>>>>>>> LOCAL STORAGE PROCESS BEGINS
+
+    //>>>>>>>>>>>> STEP ONE: STRINGIFY
+
+    let stringifiedProducts = JSON.stringify(state.allProductsArray);
+    // console.log(stringifiedProducts)
+    // confirmed information correct on jsonformatter.org
+
+    //>>>>>>>>>>>>>>>  STEP TWO: STORE / SET ITEM WITH KEY VALUE PAIR
+    localStorage.setItem('products', stringifiedProducts);
 }
+console.log(voteCount);
+}
+
+
 
 function handleShowResults(){
   if (voteCount === 0){

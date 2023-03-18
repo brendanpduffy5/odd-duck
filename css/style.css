@@ -79,7 +79,7 @@ li {
     grid-row:2/7;
 } */
 #grid-element-six {
-    background-color: blue;
+    background-color: whitesmoke;
     color:aliceblue;
     grid-column:2/-1;
     grid-row: 7/9;
@@ -88,4 +88,7 @@ li {
     background-color: blue;
     color:aliceblue;
     grid-column:1/-1;
+}
+#chart-button {
+    background-color: yellow;
 }

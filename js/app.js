@@ -3,6 +3,7 @@
 // >>>>>>>>>>> GLOBAL VARIABLES
 
 let voteCount = 25;
+let indices = [];
 
 // single source of truth for data that can change w our application state
 const state = {
@@ -58,23 +59,40 @@ console.log(state.allProductsArray);
 function getRandomIndex(){
   return Math.floor(Math.random()*state.allProductsArray.length);
 }
+function renderImgs(){
 // console.log(getRandomIndex());
 // random number works.
 
-function renderImgs(){
-  let indexOne = getRandomIndex();
-  let indexTwo = getRandomIndex();
-  let indexThree = getRandomIndex();
+  // >>>>>>>>> index use for Lab 11:
 
-  while(indexOne === indexTwo){
-    indexTwo = getRandomIndex();
+  // function renderImgs(){
+  //   let indexOne = getRandomIndex();
+  //   let indexTwo = getRandomIndex();
+  //   let indexThree = getRandomIndex();
+
+  //   while(indexOne === indexTwo){
+  //     indexTwo = getRandomIndex();
+  //   }
+
+  //   while(indexTwo === indexThree){
+  //     indexThree = getRandomIndex();
+  //   }
+
+  //>>>>>>>>>>>>>>> Indecis for Lab 12:
+
+  while(indices.length < 6){
+    let newIndex = getRandomIndex();
+    if (!indices.includes(newIndex)) {
+      indices.push(newIndex);
+    }
   }
+  console.log(indices)
+  let indexOne = indices.shift();
+  let indexTwo = indices.shift();
+  let indexThree = indices.shift();
+  console.log(indices)
 
-  while(indexTwo === indexThree){
-    indexThree = getRandomIndex();
-  }
-
-
+  //>>>>>>>>> this piece stays the same for both labs:
 
   imgOne.src = state.allProductsArray[indexOne].photo;
   imgOne.alt = state.allProductsArray[indexOne].name;
@@ -92,7 +110,7 @@ function renderImgs(){
   state.allProductsArray[indexThree].views++;
   // console.log(state.allProductsArray[indexThree.views++]);
 }
-renderImgs();
+
 
 // FUNCTION TO RENDER CHART
 function renderChart(){
@@ -177,7 +195,7 @@ function handleShowResults(){
 imgContainer.addEventListener('click', handleClick);
 chartButton.addEventListener('click', handleShowResults);
 
-
+renderImgs();
 
 
 

@@ -1,6 +1,6 @@
 
 body {
-    background-color: black;
+    background-color: #9B5DE5;
 }
 
 .grid-container {
@@ -12,29 +12,41 @@ body {
 }
 
 .grid-item {
-    border: 5px solid black;
+    border: 10px solid #F15BB5;
     border-radius: 25px;
-    font-family: 'Roboto', sans-serif;
+    font-family: font-family: 'Luckiest Guy', cursive;
     font-size: 20px;
     text-align: center;
     padding: 20px;
 }
 
 #grid-element-one {
-    background-color: blue;
-    font-size: 50px;
-    color:aliceblue;
+    background: url("https://img1.picmix.com/output/stamp/normal/6/0/9/4/254906_3c3d0.gif");
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 100px;
+    /* font-weight: bolder; */
+    /* color:aliceblue; */
     grid-column:1/-1;
 }
+
 #grid-element-two {
-    background-color: blue;
+    background-color: #9B5DE5;
     color:aliceblue;
     grid-column: 1/2;
     grid-row: 2/9;
 }
+button {
+    
+    background-color: #00BBF9 ;
+    color: black;
+}
+
+
 button:hover {
     cursor: pointer;
-    background-color: gray;
+    background-color:#FEE440;
     color: black;
 }
   
@@ -48,8 +60,10 @@ li {
 }
 
 #grid-element-three {
-    background-color: blue;
+    background-color: #9B5DE5;
     color:aliceblue;
+    font-size: 50px;
+    font-style: italic;
     grid-column: 2/7;
     grid-row:2/7;
 }
@@ -61,7 +75,7 @@ li {
   }
   
   .img-container > img {
-    border: 10px solid white;
+    border: 10px solid #00BBF9;
     border-radius: 25px;
     width: 30%;
     height: auto;
@@ -85,10 +99,15 @@ li {
     grid-row: 7/9;
 }
 #grid-element-seven {
-    background-color: blue;
+    background-color: #F15BB5;
     color:aliceblue;
     grid-column:1/-1;
 }
 #chart-button {
-    background-color: yellow;
+    background-color: #00BBF9 ;
+}
+#chart-button:hover {
+    cursor: pointer;
+    background-color: #FEE440;
+    color: black;
 }

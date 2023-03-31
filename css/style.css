@@ -21,7 +21,8 @@ body {
 }
 
 #grid-element-one {
-    background: url("https://img1.picmix.com/output/stamp/normal/6/0/9/4/254906_3c3d0.gif");
+/*     background: url("https://img1.picmix.com/output/stamp/normal/6/0/9/4/254906_3c3d0.gif"); */
+    background: url("https://giphy.com/gifs/stars-U3qYN8S0j3bpK");
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-family: 'Luckiest Guy', cursive;
